@@ -1,0 +1,151 @@
+
+
+// Semantic color scheme
+@import url('https://fonts.googleapis.com/css?family=lato:300'); 
+@import url('https://fonts.googleapis.com/css?family=Oswald:700');
+; 
+$theme-colors: (
+  primary: #c3251d,
+  secondary: #333,
+  success: #28a745,
+  info: #00fbff,
+  warning: #ffc107,
+  danger: #dc3545,
+  light: #f8f9fa,
+  dark: #343a40
+);
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+ 
+$enable-rounded:            true !default;
+$enable-shadows:            false;
+$enable-gradients:          false;
+$enable-transitions:        true !default;
+$enable-hover-media-query:  false !default;
+$enable-grid-classes:       true !default;
+$enable-print-styles:       true !default;
+
+// Variables
+//
+// Theme settings.
+
+$body-bg: white;
+$body-color: #292b2c;
+$body-color-inverse: invert($body-color) !default;
+$link-color: #c3251d;
+
+
+
+$font-family-base: lato;
+
+
+
+$headings-font-family: Oswald;
+
+
+
+
+
+
+$font-size-base: 1rem; // Assumes the browser default, typically `16px`
+$font-size-h1: 2.5 * $font-size-base;
+$font-size-h2: 2 * $font-size-base;
+$font-size-h3: 1.75 * $font-size-base;
+$font-size-h4: 1.5 * $font-size-base;
+$font-size-h5: 1.25 * $font-size-base;
+$font-size-h6: $font-size-base;
+
+$display1-size: 6 * $font-size-base;
+$display2-size: 5.5 * $font-size-base;
+$display3-size: 4.5 * $font-size-base;
+$display4-size: 3.5 * $font-size-base;
+
+
+
+
+
+
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 960px);
+
+
+
+
+
+@import 'bootstrap-4.0.0-beta.1';
+
+
+body > * {
+  background-size: cover;
+}
+
+.opaque-overlay {
+  overflow: hidden;
+  position: relative; 
+  > *:first-child:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 0px; 
+    pointer-events:none;
+    background: rgba(map-get($theme-colors, 'dark'), 0.25);
+  }
+}
+
+
+.gradient-overlay {
+  overflow: hidden;
+  position: relative; 
+  > *:first-child:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 0px; 
+    pointer-events:none;
+    background: linear-gradient(to top , map-get($theme-colors, 'dark') 0%, transparent 100%);
+
+  }
+}
+#localizacion {
+margin-bottom: -6px;
+}
+a.subir {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    line-height: 48px;
+    border-radius: 50%;
+    color: #fff;
+    background: #c3251d;
+}
+a.subir:hover {
+    color: #fff;
+    background: #333;
+}
+.cebreada{text-align:center}
+.cebreada>tbody>tr:nth-child(odd){background:rgba(250,250,250,.25)}
+.cebreada>tbody>tr>th{background:rgba(250,0,0,0.5)}
+.cebreada>tbody>tr{border-bottom:1px solid #ddd}
+.cebreada td,.cebreada th{padding: 10px}
+#normas .card {
+    border: 1px solid rgb(255, 255, 255);
+    border-top: 0 solid rgb(255, 255, 255);
+    background-color: transparent;
+    border-radius: 0;
+}
+#normas .card:first-child {
+    border-top: 1px solid rgb(255, 255, 255);
+}
+#normas .card-header {
+    background-color: rgba(255, 255, 255, 0.75);
+}

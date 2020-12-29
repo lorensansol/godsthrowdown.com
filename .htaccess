@@ -1,0 +1,31 @@
+# Activar redirecciones
+RewriteEngine On
+# Redireccionar de http a https
+# RewriteCond %{ENV:HTTPS} !on [NC]
+# RewriteCond %{SERVER_PORT} 80
+# RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+# RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+# RewriteRule ^(.*)$ https://godsthrowdown.com/$1 [R=301,L,NE]
+# Redireccionar de www a sin
+RewriteCond %{HTTP_HOST} ^www.godsthrowdown.com [NC]
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^(.*)$ http://godsthrowdown.com/$1 [L,R=301]
+# Quitar index.php
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^/]+/)*index\.php\ HTTP/
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^(([^/]+/)*)index\.php$ /$1 [R=301,L]
+# Renombrar URLs a sin .php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+#Especificar caché de navegador en servidor
+<IfModule mod_expires.c>
+<filesmatch "\.(ico|pdf|flv|svg|jpg|jpeg|png|gif|mp4|JPG|JPEG|PNG|GIF|MP4|js|css|xml|txt|woff2|woff|ttf|eot)$">
+ExpiresActive on
+ExpiresDefault "access plus 30 day"
+</filesmatch>
+</IfModule>
+# Redirecciones 301
+Redirect 301 /m/ /
+Redirect 301 /mobile/ /
